@@ -1,0 +1,40 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude([
+        'config',
+        'database',
+        'public',
+        'resources',
+        'storage',
+        'tests',
+        'bootstrap'
+    ]);
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true, // use normal PSR2 formatting
+        'align_multiline_comment' => ['comment_type' => 'phpdocs_only'], // Align the docblock by asterisk
+        'array_syntax' => ['syntax' => 'short'], // Force [] syntax
+        'binary_operator_spaces' => true,
+        'blank_line_after_opening_tag' => true, // for readability, make sure nothing is after the <?php line
+        'concat_space' => ['spacing' => 'one'], // force a space when concatinating with a .
+        'no_blank_lines_before_namespace' => true, // personal preference
+        'no_unused_imports' => true, // Make sure the imports are clean and only importing what we use
+        'no_empty_comment' => true, // Comments should not be left empty
+        'no_empty_phpdoc' => true, // same as above
+        'no_useless_else' => true, // if/else statements should be useful, not empty
+        'no_whitespace_in_blank_line' => true, // remove extra spaces on empty lines
+        'ordered_imports' => ['sortAlgorithm' => 'length'], // order imports by length
+        'phpdoc_add_missing_param_annotation' => true, // any missing @params are auto added
+        'phpdoc_align' => true, // Align each part of the PHP doc
+        'phpdoc_indent' => true, // Indent the docblock to the function
+        'phpdoc_order' => true, // Order the annotations by type (@param -> @throw -> @return)
+        'phpdoc_separation' => true, // Separate each of the types of annotations
+        'psr4' => true, // force filename to match class name
+        'single_line_comment_style' => true, // force one-line comments to use the double slash syntax
+        'single_quote' => true, // convert "" to '' for simple strings
+        'standardize_not_equals' => true, // force != if using <>
+    ])->setFinder($finder);

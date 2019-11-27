@@ -1,0 +1,77 @@
+@tailwind base;
+
+html, body {
+    @apply bg-gray-100 text-gray-800;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    line-height: 1.6;
+    height: 100vh;
+}
+
+@tailwind components;
+
+.nav-link {
+    // i {
+    //     transform: rotate(0deg);
+    //     transition: transform var(--transition-duration) ease-in-out;
+    // }
+
+    // &:hover i {
+    //     transform: rotate(360deg);
+    // }
+
+    &.router-link-active {
+        @apply text-primary;
+    }
+
+    &:hover {
+
+    }
+
+    &:after {
+        @apply bg-primary absolute left-0 right-0 h-0;
+        content: '';
+        bottom: -0.75rem;
+        transition: all var(--transition-duration) ease-in-out;
+        pointer-events: none;
+    }
+
+    &:hover:after {
+        height: 0.1rem;
+        bottom: -0.25rem;
+    }
+}
+
+.project {
+    @apply relative;
+
+    a:before {
+        @apply absolute w-2 h-2 bg-green-500 rounded-full mr-3;
+        content: '';
+        left: 30px;
+        top: calc(50% - 0.25rem);
+    }
+
+    &.primary a:before {
+        @apply bg-primary;
+    }
+
+    &.indigo a:before {
+        @apply bg-indigo-500;
+    }
+
+    &.purple a:before {
+        @apply bg-purple-500;
+    }
+}
+
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,400,700&display=swap');
+
+$fa-font-path: '../fonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
